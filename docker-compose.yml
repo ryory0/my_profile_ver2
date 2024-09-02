@@ -1,16 +1,45 @@
 version: '3'
 services:
-  db:
-    image: mysql
-    environment:
-      - MYSQL_DATABASE=key_type_db 
-      - MYSQL_ROOT_PASSWORD=
-  web:
-    build: .
-    command: python /key_type/myproject/myproject/manage.py runserver 0.0.0.0:8000
+
+  front:
+    container_name: react_front
+    build: ./front
     volumes:
-      - .:/key_type/myproject  # ホストのプロジェクトをコンテナ内にマウント
+      - ./front/my-app:/myapp
+    ports:
+      - 3000:3000
+    working_dir: /myapp
+    tty: true
+
+  db:
+    container_name: mysql-db
+    image: mysql:9.0
+    volumes:
+      - db-store:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rolV2N5J
+      MYSQL_DATABASE: key_type_db
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    healthcheck:
+      test: mysqladmin ping
+      interval: 15s
+      retries: 5
+
+  back:
+    container_name: django-back
+    build:
+      context: ./back  # ルートディレクトリにあるDockerfileを使用
+      dockerfile: Dockerfile  # back用のDockerfileを指定
+    volumes:
+      - ./back:/back
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    tty: true
+    stdin_open: true
+  
+volumes:
+  db-store:
