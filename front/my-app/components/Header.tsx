@@ -47,7 +47,7 @@ export const Header = () => {
 			<Heading as="h1" fontSize="4xl" ml={4}>Fodo Food</Heading>
 			<HStack spacing={4} w="full" maxW="100%" justifyContent="center">
 				<Button
-					onClick={() => router.push("/shopping")}
+					onClick={() => router.push("/Products")}
 					w="full"
 					bgColor="white"
 					border="1px solid orange"
@@ -65,7 +65,7 @@ export const Header = () => {
 					レシピ
 				</Button>
 				<Button
-					onClick={() => router.push("/topics")}
+					onClick={() => router.push("/Topics")}
 					w="full"
 					bgColor="white"
 					border="1px solid orange"
