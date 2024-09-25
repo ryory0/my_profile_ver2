@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
+'use client';
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Box, Spinner } from '@chakra-ui/react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -12,17 +13,27 @@ const VoxelDog = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
   const [renderer, setRenderer] = useState()
-  const [camera, setCamera] = useState(null)
-  const [target] = useState(new THREE.Vector3(-0.5, 1.2, 0))
+  const [_camera, setCamera] = useState()
+  const [target] = useState(new THREE.Vector3(0, 0, 0))
   const [initialCameraPosition] = useState(
     new THREE.Vector3(
-      20 * Math.sin(0.2 * Math.PI),
+      200 * Math.sin(0.2 * Math.PI),
       10,
-      20 * Math.cos(0.2 * Math.PI)
+      200 * Math.cos(0.2 * Math.PI)
     )
   )
   const [scene] = useState(new THREE.Scene())
   const [_controls, setControls] = useState()
+
+  const handleWindowResize = useCallback(() => {
+    const { current: container } = refContainer
+    if ( container && renderer) {
+      const scW = container.clientWidth
+      const scH = container.clientHeight
+
+      renderer.setSize(scW, scH)
+    }
+  }, [renderer])
 
   useEffect(() => {
     const { current: container } = refContainer
@@ -40,7 +51,7 @@ const VoxelDog = () => {
       container.appendChild(renderer.domElement)
       setRenderer(renderer)
 
-      const scale = scH * 0.005 + 4.8
+      const scale = scH * 0.0005 + 1.8
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
@@ -66,15 +77,13 @@ const VoxelDog = () => {
       controls.target = target
       setControls(controls)
 
-      loaderGLTFModel(scene, '/rocket.glb', {
+      loaderGLTFModel(scene, '/earth_modified.glb', {
         receiveShadow: false,
         castShadow: false
       })
       .then(() => {
+        animate()
         setLoading(false)
-      })
-      .catch((err) => {
-        console.error('Failed to load model:', err); // エラーハンドリング追加
       })
 
       let req = null
@@ -82,7 +91,6 @@ const VoxelDog = () => {
       const animate = () => {
         req = requestAnimationFrame(animate)
         frame = frame <= 100 ? frame + 1 : frame
-
         if (frame <= 100) {
           const p = initialCameraPosition
           const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
@@ -97,25 +105,27 @@ const VoxelDog = () => {
 
         renderer.render(scene, camera)
       }
-      animate()
 
       return () => {
         cancelAnimationFrame(req)
-        controls.dispose()
         renderer.dispose()
-        if (container) {
-          container.removeChild(renderer.domElement)
-        }
       }
     }
-  }, [renderer])
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize, false)
+    return() => {
+      window.removeEventListener('resize', handleWindowResize, false)
+    }
+  }, [renderer, handleWindowResize])
 
   return (
     <Box
       ref={refContainer}
       className='voxel-dog'
       m="auto"
-      at={['20px', '-60px', '-120px']}
+      at={['-20px', '-60px', '-120px']}
       mb={['-40px', '-140px', '-200px']}
       w={[280, 480, 640]}
       h={[280, 480, 640]}
@@ -124,7 +134,8 @@ const VoxelDog = () => {
         <Spinner
           size="xl"
           position="absolute"
-          left="50%"
+          left="100%"
+          top="100%"
           ml="calc(0px - var(--spinner-size) /2)"
           mt="calc(0px - var(--spinner-size))"
         />

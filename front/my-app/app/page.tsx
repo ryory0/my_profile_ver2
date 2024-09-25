@@ -19,11 +19,11 @@ import NoSsr from '../components/no-ssr'
 
 const Page = () => {
   return (
-    <Layout>  
+    <Layout> 
+      <NoSsr>
+        <VoxelDog />
+      </NoSsr>
       <Container pt={20} maxW="container.md">
-        <NoSsr>
-          <VoxelDog />
-        </NoSsr>
         <Box
           borderRadius="lg"
           bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
