@@ -1,5 +1,5 @@
-import dynamic from "next/dynamic";
-import React, { ReactNode } from "react";
+import dynamic from 'next/dynamic';
+import React, { ReactNode } from 'react';
 
 // NoSsrコンポーネントを定義
 interface NoSsrProps {

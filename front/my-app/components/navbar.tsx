@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/components/Logo";
+import Logo from '@/components/Logo';
 import NextLink from 'next/link'
 import {
     Container,
@@ -91,9 +91,6 @@ const Navbar = ({ path }: NavbarProps) => {
                                     </NextLink>
                                     <NextLink href="/works" passHref legacyBehavior>
                                         <MenuItem>Works</MenuItem>
-                                    </NextLink>
-                                    <NextLink href="/posts" passHref legacyBehavior>
-                                        <MenuItem>Posts</MenuItem>
                                     </NextLink>
                                 </MenuList>
                             </Menu>
