@@ -1,10 +1,13 @@
 import dynamic from "next/dynamic";
-import React from "react";
-
+import React, { ReactNode } from "react";
 
 // NoSsrコンポーネントを定義
-const NoSsr: React.FC = ({ children }) => <>{children}</>;
+interface NoSsrProps {
+  children: ReactNode;
+}
+
+const NoSsr: React.FC<NoSsrProps> = ({ children }) => <>{children}</>;
 
 export default dynamic(() => Promise.resolve(NoSsr), {
-    ssr: false, // サーバーサイドレンダリングを無効化
-  });
+  ssr: false, // サーバーサイドレンダリングを無効化
+});

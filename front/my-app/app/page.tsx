@@ -19,7 +19,7 @@ import NoSsr from '../components/no-ssr'
 
 const Page = () => {
   return (
-    <Layout> 
+    <Layout title='Homepage'>
       <NoSsr>
         <VoxelDog />
       </NoSsr>
