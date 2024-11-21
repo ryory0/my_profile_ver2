@@ -1,7 +1,7 @@
 "use client";
 
 import { Container, Box, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
-import Section from "@/components/section"
+import Section from '@/components/section'
 import { WorkGridItem } from '@/components/grid-item'
 import thumbInkdrop from '@/public/images/main.png'
 import thumbWalknote from '@/public/images/test_product_2.png'

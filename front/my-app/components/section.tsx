@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Box, chakra, shouldForwardProp } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import { isValidMotionProp } from "framer-motion";
+import { motion } from 'framer-motion';
+import { Box, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { isValidMotionProp } from 'framer-motion';
 
 type SectionProps = {
   children: ReactNode;
