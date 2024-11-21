@@ -1,45 +1,51 @@
-version: '3'
+version: '3'  # Docker Composeのバージョン指定
+
 services:
-
+  # フロントエンドのReactサービス設定
   front:
-    container_name: react_front
-    build: ./front
+    container_name: react_front  # フロントエンド用のコンテナ名
+    build: ./front  # ./frontディレクトリ内のDockerfileを使用してイメージをビルド
     volumes:
-      - ./front/my-app:/myapp
+      - ./front/my-app:/myapp  # ホストの./front/my-appをコンテナ内の/myappにマウント
     ports:
-      - 3000:3000
-    working_dir: /myapp
-    tty: true
-
-  db:
-    container_name: mysql-db
-    image: mysql:9.0
-    volumes:
-      - db-store:/var/lib/mysql
+      - 3000:3000  # ホストのポート3000をコンテナのポート3000にマッピング
+    working_dir: /myapp  # 作業ディレクトリを/myappに設定
+    tty: true  # 仮想端末を有効化（コンテナ内で対話的に操作可能に）
     environment:
-      MYSQL_ROOT_PASSWORD: rolV2N5J
-      MYSQL_DATABASE: key_type_db
-      TZ: 'Asia/Tokyo'
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    healthcheck:
-      test: mysqladmin ping
-      interval: 15s
-      retries: 5
+      - CHOKIDAR_USEPOLLING=true  # ファイル変更をポーリングで監視してホットリロードを有効化
 
-  back:
-    container_name: django-back
-    build:
-      context: ./back  # ルートディレクトリにあるDockerfileを使用
-      dockerfile: Dockerfile  # back用のDockerfileを指定
+  # データベースのMySQLサービス設定
+  db:
+    container_name: mysql-db  # MySQL用のコンテナ名
+    image: mysql:9.0  # MySQLのバージョン9.0イメージを使用
     volumes:
-      - ./back:/back
+      - db-store:/var/lib/mysql  # MySQLデータを永続化するためのボリュームマウント
+    environment:
+      MYSQL_ROOT_PASSWORD: rolV2N5J  # rootユーザーのパスワード設定
+      MYSQL_DATABASE: key_type_db  # 初期作成するデータベース名
+      TZ: 'Asia/Tokyo'  # タイムゾーンを東京に設定
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci  # 文字コードと照合順序をutf8に設定
+    healthcheck:
+      test: mysqladmin ping  # MySQLの状態を確認するヘルスチェック
+      interval: 15s  # 15秒ごとにヘルスチェックを実行
+      retries: 5  # 最大5回リトライ
+
+  # バックエンドのDjangoサービス設定
+  back:
+    container_name: django-back  # バックエンド用のコンテナ名
+    build:
+      context: ./back  # ./backディレクトリ内のDockerfileを使用してビルド
+      dockerfile: Dockerfile  # 使用するDockerfileの指定
+    volumes:
+      - ./back:/back  # ホストの./backをコンテナ内の/backにマウント
     ports:
-      - "8000:8000"
+      - "8000:8000"  # ホストのポート8000をコンテナのポート8000にマッピング
     depends_on:
       db:
-        condition: service_healthy
-    tty: true
-    stdin_open: true
-  
+        condition: service_healthy  # dbが正常に起動した場合のみbackを起動
+    tty: true  # 仮想端末を有効化
+    stdin_open: true  # 標準入力を開いた状態で保持（対話型のため）
+
+# ボリューム定義
 volumes:
-  db-store:
+  db-store:  # MySQLデータを保存するための永続化ボリューム
