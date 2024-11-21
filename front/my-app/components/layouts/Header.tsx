@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/router'; 
 import Head from 'next/head';
-import Navbar from '../Navbar';
+import Navbar from "@/components/Navbar";
 import { Box, Container } from '@chakra-ui/react';
 
 const Header = () => {

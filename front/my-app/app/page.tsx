@@ -9,13 +9,13 @@ import {
   Button,
   useColorModeValue,
 } from '@chakra-ui/react';
-import Section from '../components/section';
+import Section from '@/components/section';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Paragraph from '../components/paragraph';
-import { BioSection, BioYear } from '../components/bio';
-import Layout from '../components/layouts/article';  // Layoutをインポート
+import Paragraph from '@/components/paragraph';
+import { BioSection, BioYear } from '@/components/bio';
+import Layout from '@/components/layouts/article';  // Layoutをインポート
 import VoxelDog from '@/components/voxel-dog';
-import NoSsr from '../components/no-ssr'
+import NoSsr from '@/components/no-ssr'
 
 const Page = () => {
   return (

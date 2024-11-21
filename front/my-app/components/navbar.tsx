@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from './Logo'
+import Logo from "@/components/Logo";
 import NextLink from 'next/link'
 import {
     Container,

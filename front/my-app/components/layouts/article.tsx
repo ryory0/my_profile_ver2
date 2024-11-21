@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-import { GridItemStyle } from '../grid-item'
+import { GridItemStyle } from '@/components/grid-item'
 import { ReactNode } from 'react';
 
 const variants = {

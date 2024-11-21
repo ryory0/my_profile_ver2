@@ -1,8 +1,8 @@
 "use client";
 
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
-import Header from "../components/layouts/Header";
-import theme from '../lib/theme';
+import Header from "@/components/layouts/Header";
+import theme from '@/lib/theme';
 import { ReactNode } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
