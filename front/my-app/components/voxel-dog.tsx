@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Box, Spinner } from '@chakra-ui/react';
 import * as THREE from 'three';
@@ -47,7 +48,7 @@ const VoxelDog = () => {
       });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(scW, scH);
-      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.outputColorSpace = "srgb"; // 修正箇所
       container.appendChild(renderer.domElement);
       setRenderer(renderer);
 
