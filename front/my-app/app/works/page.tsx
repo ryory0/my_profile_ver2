@@ -15,7 +15,7 @@ const Works = () => {
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
         <Section>
           <WorkGridItem
-            workId="fodo-food" // idをworkIdに変更
+            id="fodo food" // idをworkIdに変更
             title="Fodo Food"
             thumbnail={thumbInkdrop}
           >
@@ -24,7 +24,7 @@ const Works = () => {
         </Section>
         <Section>
           <WorkGridItem
-            workId="vizlab" // idをworkIdに変更
+            id="vizlab" // idをworkIdに変更
             title="VizLab"
             thumbnail={thumbWalknote}
           >
