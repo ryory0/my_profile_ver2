@@ -76,9 +76,6 @@ const Navbar = ({ path }: NavbarProps) => {
                         <LinkItem href="/works" path={path}>
                             Works
                         </LinkItem>
-                        <LinkItem href="/posts" path={path}>
-                            Posts
-                        </LinkItem>
                     </Stack>
                     <Box flex={1} textAlign="right">
                         <ThemeToggleButton />
