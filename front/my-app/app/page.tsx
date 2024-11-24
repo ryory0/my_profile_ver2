@@ -13,11 +13,16 @@ import Paragraph from '@/components/paragraph';
 import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Layout from '@/components/layouts/article';
-
+import NoSsr from '@/components/no-ssr';
 
 const Page = () => {
   return (
     <Layout title='Homepage'> 
+      <NoSsr>
+      <div>
+        Content that doesn't require SSR.
+      </div>
+      </NoSsr>
       <Container pt={20} maxW="container.md">
         <Box
           borderRadius="lg"
