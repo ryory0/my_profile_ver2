@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Box } from '@chakra-ui/react';
+import { chakra } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 type SectionProps = {
   children: ReactNode;
-  delay?: number; // オプショナルなプロパティ
+  delay?: number;
 };
 
-const MotionBox = motion.create(Box); // ChakraのBoxをmotionでラップ
+const MotionBox = motion(chakra.div);
 
 const Section = ({ children, delay = 0 }: SectionProps) => {
   return (
