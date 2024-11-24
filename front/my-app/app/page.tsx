@@ -20,7 +20,7 @@ const Page = () => {
     <Layout title='Homepage'> 
       <NoSsr>
       <div>
-        Content that doesn't require SSR.
+        Content that doesn&apos;t require SSR.
       </div>
       </NoSsr>
       <Container pt={20} maxW="container.md">
