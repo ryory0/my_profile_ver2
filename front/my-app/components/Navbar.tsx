@@ -76,9 +76,6 @@ const Navbar = ({ path }: NavbarProps) => {
                         <LinkItem href="/works" path={path}>
                             Works
                         </LinkItem>
-                        <LinkItem href="/posts" path={path}>
-                            Posts
-                        </LinkItem>
                     </Stack>
                     <Box flex={1} textAlign="right">
                         <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
@@ -90,9 +87,6 @@ const Navbar = ({ path }: NavbarProps) => {
                                     </NextLink>
                                     <NextLink href="/works" passHref legacyBehavior>
                                         <MenuItem>Works</MenuItem>
-                                    </NextLink>
-                                    <NextLink href="/posts" passHref legacyBehavior>
-                                        <MenuItem>Posts</MenuItem>
                                     </NextLink>
                                 </MenuList>
                             </Menu>
