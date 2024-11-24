@@ -5,7 +5,7 @@ import Navbar from "../Navbar";
 import { Box } from "@chakra-ui/react";
 
 const Header = () => {
-  const router = useRouter(); // クライアントサイドで現在のパスを取得
+  const router = useRouter(); // 現在のパスを取得
 
   return (
     <Box as="header">
