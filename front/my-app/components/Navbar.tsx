@@ -32,14 +32,10 @@ type LinkItemProps = {
 }
 
 const LinkItem = ({ href, path, children }: LinkItemProps) => {
-    const active = path === href
-    const inactiveColor = useColorModeValue('gray.600', 'whiteAlpha.900')
-
     return (
         <NextLink href={href} passHref legacyBehavior>
             <Link
                 p={5}
-                color={active ? '#202023' : inactiveColor}
             >
                 {children}
             </Link>
