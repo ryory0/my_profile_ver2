@@ -56,8 +56,8 @@ const Earth = () => {
       });
       rendererInstance.setPixelRatio(window.devicePixelRatio);
       rendererInstance.setSize(scW, scH);
-      // 型キャストを使用してエラーを回避
-      (rendererInstance as any).outputEncoding = THREE.SRGBColorSpace;;
+      rendererInstance.shadowMap.enabled = true;
+      rendererInstance.shadowMap.type = THREE.PCFSoftShadowMap; // ソフトシャドウ
       container.appendChild(rendererInstance.domElement);
       setRenderer(rendererInstance);
 
@@ -74,12 +74,21 @@ const Earth = () => {
       cameraInstance.lookAt(target);
       setCamera(cameraInstance);
 
-      const ambientLight = new THREE.AmbientLight(0xcccccc, 1);
+      // ライティングの設定
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.5); // 弱めの環境光
       scene.add(ambientLight);
 
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionalLight.position.set(5, 10, 7.5);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+      directionalLight.position.set(10, 20, 10);
+      directionalLight.castShadow = true;
       scene.add(directionalLight);
+
+      const spotLight = new THREE.SpotLight(0xffffff, 1.5);
+      spotLight.position.set(15, 20, 10);
+      spotLight.castShadow = true;
+      spotLight.shadow.mapSize.width = 1024;
+      spotLight.shadow.mapSize.height = 1024;
+      scene.add(spotLight);
 
       const controlsInstance = new OrbitControls(cameraInstance, rendererInstance.domElement);
       controlsInstance.autoRotate = true;
@@ -87,8 +96,8 @@ const Earth = () => {
       setControls(controlsInstance);
 
       loaderGLTFModel(scene, '/earth_modified.glb', {
-        receiveShadow: false,
-        castShadow: false,
+        receiveShadow: true,
+        castShadow: true,
       }).then(() => {
         animate();
         setLoading(false);
