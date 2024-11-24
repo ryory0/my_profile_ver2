@@ -33,15 +33,15 @@ type LinkItemProps = {
 
 const LinkItem = ({ href, path, children }: LinkItemProps) => {
     const active = path === href;
-    const activeColor = useColorModeValue("#202023", "white");
-    const inactiveColor = useColorModeValue("gray.600", "whiteAlpha.900");
+    const activeColor = "glassTeal"; // アクティブ時の文字色をglassTealに固定
+    const inactiveColor = useColorModeValue("gray.600", "whiteAlpha.900"); // 非アクティブ時の文字色
   
     return (
       <NextLink href={href} passHref legacyBehavior>
         <Link
           p={5}
-          color={active ? activeColor : inactiveColor} // 条件外でフックを呼び出さない
-          fontWeight={active ? "bold" : "normal"}
+          color={active ? activeColor : inactiveColor} // アクティブな場合はglassTeal、そうでない場合はモードに応じた色
+          _hover={{ textDecoration: "none", color: activeColor }} // ホバー時もglassTealを強調
         >
           {children}
         </Link>
