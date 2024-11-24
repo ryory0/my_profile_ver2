@@ -7,6 +7,7 @@ import {
   Heading,
   Button,
   useColorModeValue,
+  Image
 } from '@chakra-ui/react';
 import Section from '@/components/section';
 import Paragraph from '@/components/paragraph';
@@ -14,14 +15,13 @@ import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Layout from '@/components/layouts/article';
 import NoSsr from '@/components/no-ssr';
+import Earth from '@/components/earth';
 
 const Page = () => {
   return (
     <Layout title='Homepage'> 
       <NoSsr>
-      <div>
-        Content that doesn&apos;t require SSR.
-      </div>
+        <Earth />
       </NoSsr>
       <Container pt={20} maxW="container.md">
         <Box
@@ -48,6 +48,16 @@ const Page = () => {
             ml={{ md: 6 }}
             textAlign="center"
           >
+            <Image
+              borderColor="whiteAlpha.800"
+              borderWidth={2}
+              borderStyle="solid"
+              maxWidth="100px"
+              display="inline-block"
+              borderRadius="full"
+              src="/images/my_image3.jpg"
+              alt="Profile Image"
+            />
           </Box>
         </Box>
         <Section delay={0.1}>
