@@ -13,12 +13,9 @@ import Section from '@/components/section';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Paragraph from '@/components/paragraph';
 import { BioSection, BioYear } from '@/components/bio';
-import Layout from '@/components/layouts/article';  // Layoutをインポート
-
 
 const Page = () => {
   return (
-    <Layout title='Homepage'>
       <Container pt={20} maxW="container.md">
         <Box
           borderRadius="lg"
@@ -93,7 +90,6 @@ const Page = () => {
           </Paragraph>
         </Section>
       </Container>
-    </Layout> 
   );
 };
 
