@@ -75,7 +75,7 @@ const Earth = () => {
       setCamera(cameraInstance);
 
       // ライティングの設定
-      const ambientLight = new THREE.AmbientLight(0x404040, 0.5); // 弱めの環境光
+      const ambientLight = new THREE.AmbientLight(0x404040, 3); // 弱めの環境光
       scene.add(ambientLight);
 
       const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
