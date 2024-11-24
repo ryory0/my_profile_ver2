@@ -9,14 +9,20 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Section from '@/components/section';
+import Paragraph from '@/components/paragraph';
 import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Layout from '@/components/layouts/article';
-
+import NoSsr from '@/components/no-ssr';
 
 const Page = () => {
   return (
     <Layout title='Homepage'> 
+      <NoSsr>
+      <div>
+        Content that doesn&apos;t require SSR.
+      </div>
+      </NoSsr>
       <Container pt={20} maxW="container.md">
         <Box
           borderRadius="lg"
@@ -80,10 +86,11 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             Passions & Pursuits 🔥
           </Heading>
-        </Section>
+          <Paragraph>
             My hobbies include muscle training, web application development, and I am currently studying Django, Next.js, and
             machine learning for chemistry.
-
+          </Paragraph>
+        </Section>
       </Container>
     </Layout>
   );
