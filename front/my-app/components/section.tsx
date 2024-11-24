@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { chakra } from '@chakra-ui/react';
+import { chakra, ChakraProps } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 type SectionProps = {
@@ -9,14 +9,17 @@ type SectionProps = {
   delay?: number;
 };
 
-const MotionBox = motion(chakra.div);
+// Chakraスタイルを適用したMotionコンポーネントに型を拡張
+const MotionBox = chakra(motion.div, {
+  shouldForwardProp: (prop) =>
+    ['transition', 'initial', 'animate'].includes(prop) || typeof prop === 'string',
+});
 
 const Section = ({ children, delay = 0 }: SectionProps) => {
   return (
     <MotionBox
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay }}
       mb={6}
     >
       {children}
