@@ -32,24 +32,23 @@ type LinkItemProps = {
 };
 
 const LinkItem = ({ href, path, children }: LinkItemProps) => {
-  const active = path === href;
-  const inactiveColor = useColorModeValue("gray.600", "whiteAlpha.900");
-
-  return (
-    <NextLink href={href} passHref legacyBehavior>
-      <Link
-        p={5}
-        bg={active ? "glassTeal" : undefined}
-        color={active ? useColorModeValue("#202023", "white") : inactiveColor}
-        fontWeight={active ? "bold" : "normal"} // アクティブなリンクは太字に
-        borderRadius="md" // リンクの背景を少し角丸に
-        _hover={{ textDecoration: "none", bg: useColorModeValue("gray.200", "gray.700") }} // ホバー時のスタイル
-      >
-        {children}
-      </Link>
-    </NextLink>
-  );
-};
+    const active = path === href;
+    const activeColor = useColorModeValue("#202023", "white");
+    const inactiveColor = useColorModeValue("gray.600", "whiteAlpha.900");
+  
+    return (
+      <NextLink href={href} passHref legacyBehavior>
+        <Link
+          p={5}
+          bg={active ? "glassTeal" : undefined}
+          color={active ? activeColor : inactiveColor} // 条件外でフックを呼び出さない
+          fontWeight={active ? "bold" : "normal"}
+        >
+          {children}
+        </Link>
+      </NextLink>
+    );
+  };
 
 const Navbar = ({ path, ...props }: NavbarProps) => {
   return (
