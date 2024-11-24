@@ -39,7 +39,6 @@ const LinkItem = ({ href, path, children }: LinkItemProps) => {
         <NextLink href={href} passHref legacyBehavior>
             <Link
                 p={5}
-                bg={active ? 'glassTeal' : undefined}
                 color={active ? '#202023' : inactiveColor}
             >
                 {children}
