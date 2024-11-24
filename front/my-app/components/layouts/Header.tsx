@@ -1,15 +1,16 @@
 "use client";
 
-import { useRouter } from "next/router";
-import Navbar from "../Navbar";
 import { Box } from "@chakra-ui/react";
+import Navbar from "../Navbar";
 
-const Header = () => {
-  const router = useRouter(); // 現在のパスを取得
+type HeaderProps = {
+  path: string;
+};
 
+const Header = ({ path }: HeaderProps) => {
   return (
     <Box as="header">
-      <Navbar path={router.asPath} /> {/* path を Navbar に渡す */}
+      <Navbar path={path} />
     </Box>
   );
 };
