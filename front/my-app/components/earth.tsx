@@ -11,6 +11,7 @@ function easeOutCirc(x: number): number {
 }
 
 const Earth = () => {
+console.log("Earth component rendered");
   const refContainer = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const [renderer, setRenderer] = useState<THREE.WebGLRenderer | null>(null);
