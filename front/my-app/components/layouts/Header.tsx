@@ -1,16 +1,16 @@
 "use client";
 
-import Head from 'next/head';
+import { Box } from "@chakra-ui/react";
+import Navbar from "../Navbar";
 
-import { Box, Container } from '@chakra-ui/react';
+type HeaderProps = {
+  path: string;
+};
 
-const Header = () => {
+const Header = ({ path }: HeaderProps) => {
   return (
-    <Box as="header"> 
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Ryohei Yoshine - Homepage</title>
-      </Head>
+    <Box as="header">
+      <Navbar path={path} />
     </Box>
   );
 };
