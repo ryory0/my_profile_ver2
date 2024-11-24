@@ -17,7 +17,7 @@ export function loaderGLTFModel(
         const obj = gltf.scene; // GLTFのシーンを取得
 
         obj.name = 'dog';
-        obj.position.y = 0;
+        obj.position.y = -0.25;
         obj.position.x = 0;
         obj.receiveShadow = receiveShadow ?? true; // オプションのデフォルト値
         obj.castShadow = castShadow ?? true;
