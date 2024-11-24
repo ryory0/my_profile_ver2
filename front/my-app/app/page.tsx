@@ -14,15 +14,11 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import Paragraph from '@/components/paragraph';
 import { BioSection, BioYear } from '@/components/bio';
 import Layout from '@/components/layouts/article';  // Layoutをインポート
-import VoxelDog from '@/components/voxel-dog';
-import NoSsr from '@/components/no-ssr'
+
 
 const Page = () => {
   return (
     <Layout title='Homepage'>
-      <NoSsr>
-        <VoxelDog />
-      </NoSsr>
       <Container pt={20} maxW="container.md">
         <Box
           borderRadius="lg"

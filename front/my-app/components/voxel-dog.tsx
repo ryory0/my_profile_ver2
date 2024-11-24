@@ -27,6 +27,8 @@ const VoxelDog = () => {
   const [_controls, setControls] = useState<OrbitControls | null>(null);
 
   const handleWindowResize = useCallback(() => {
+    if (typeof window === 'undefined') return;
+
     const container = refContainer.current;
     if (container && renderer) {
       const scW = container.clientWidth;
@@ -37,6 +39,8 @@ const VoxelDog = () => {
   }, [renderer]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const container = refContainer.current;
     if (container && !renderer) {
       const scW = container.clientWidth;
@@ -48,7 +52,7 @@ const VoxelDog = () => {
       });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(scW, scH);
-      renderer.outputColorSpace = "srgb"; // 修正箇所
+      renderer.outputColorSpace = "srgb";
       container.appendChild(renderer.domElement);
       setRenderer(renderer);
 
@@ -115,6 +119,8 @@ const VoxelDog = () => {
   }, [initialCameraPosition, renderer, scene, target]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     window.addEventListener("resize", handleWindowResize, false);
     return () => {
       window.removeEventListener("resize", handleWindowResize, false);
