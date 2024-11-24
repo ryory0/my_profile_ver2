@@ -1,18 +1,25 @@
 "use client";
 
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
+import Header from "../components/layouts/Header";
+import theme from '../lib/theme';
 import { ReactNode } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
+
 export default function RootLayout({ children }: { children: ReactNode }) {
+
   return (
     <html lang="en">
       <head>
-        <title>My App</title>
       </head>
       <body>
-        <ChakraProvider>
-          <AnimatePresence>{children}</AnimatePresence>
+        <ChakraProvider theme={theme}>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <Header />
+          <AnimatePresence mode="sync" initial={true}>
+              {children} {/* ページのコンテンツ */}
+          </AnimatePresence>
         </ChakraProvider>
       </body>
     </html>
