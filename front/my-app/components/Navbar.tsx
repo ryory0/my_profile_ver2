@@ -40,7 +40,6 @@ const LinkItem = ({ href, path, children }: LinkItemProps) => {
       <NextLink href={href} passHref legacyBehavior>
         <Link
           p={5}
-          bg={active ? "glassTeal" : undefined}
           color={active ? activeColor : inactiveColor} // 条件外でフックを呼び出さない
           fontWeight={active ? "bold" : "normal"}
         >
