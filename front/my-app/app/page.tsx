@@ -9,8 +9,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import Paragraph from '@/components/paragraph';
-import { BioSection, BioYear } from '@/components/bio';
+
+
 
 const Page = () => {
   return (
@@ -45,10 +45,8 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             Work
           </Heading>
-          <Paragraph>
             I am a first-year graduate student who majored in chemistry at university, and I am currently using computer
             simulations to analyze protein-drug interactions.{' '}
-          </Paragraph>
           <Box textAlign="center" my={4}>
             <NextLink href="/works">
               <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
@@ -60,27 +58,9 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             Bio
           </Heading>
-          <BioSection>
-            <BioYear>2000</BioYear>
-            Born in Saitama, Japan.
-          </BioSection>
-          <BioSection>
-            <BioYear>2019</BioYear>
-            Graduated from Saitama Prefectural Tokorozawa High School.
-          </BioSection>
-          <BioSection>
-            <BioYear>2024 to present</BioYear>
-            Currently in the first year of the Master&apos;s Program in the Graduate School of Science, majoring in
-            Chemistry at Rikkyo University.
-          </BioSection>
 
-          <Heading as="h3" variant="section-title">
-            Passions & Pursuits 🔥
-          </Heading>
-          <Paragraph>
             My hobbies include muscle training, web application development, and I am currently studying Django, Next.js, and
             machine learning for chemistry.
-          </Paragraph>
 
       </Container>
   );
