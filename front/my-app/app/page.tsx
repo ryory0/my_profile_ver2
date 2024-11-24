@@ -9,6 +9,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Section from '@/components/section';
+import Paragraph from '@/components/paragraph';
 import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Layout from '@/components/layouts/article';
@@ -80,10 +81,11 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             Passions & Pursuits 🔥
           </Heading>
-        </Section>
+          <Paragraph>
             My hobbies include muscle training, web application development, and I am currently studying Django, Next.js, and
             machine learning for chemistry.
-
+          </Paragraph>
+        </Section>
       </Container>
     </Layout>
   );
