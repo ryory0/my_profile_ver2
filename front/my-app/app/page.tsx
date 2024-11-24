@@ -8,6 +8,7 @@ import {
   Button,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Layout from '@/components/layouts/article';
 
@@ -59,6 +60,19 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             Bio
           </Heading>
+            <BioSection>
+              <BioYear>2000</BioYear>
+              Born in Saitama (埼玉), Japan.
+            </BioSection>
+            <BioSection>
+              <BioYear>2019</BioYear>
+              Graduated from Saitama Prefectural Tokorozawa High School.
+            </BioSection>
+            <BioSection>
+              <BioYear>2024 to present</BioYear>
+              Currently in the first year of the Master&apos;s Program in the Graduate School of Science, majoring in
+              Chemistry at Rikkyo University.
+            </BioSection>
 
             My hobbies include muscle training, web application development, and I am currently studying Django, Next.js, and
             machine learning for chemistry.
