@@ -14,14 +14,13 @@ import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Layout from '@/components/layouts/article';
 import NoSsr from '@/components/no-ssr';
+import Earth from '@/components/earth';
 
 const Page = () => {
   return (
     <Layout title='Homepage'> 
       <NoSsr>
-      <div>
-        Content that doesn&apos;t require SSR.
-      </div>
+        <Earth />
       </NoSsr>
       <Container pt={20} maxW="container.md">
         <Box
