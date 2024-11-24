@@ -9,11 +9,12 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-
+import Layout from '@/components/layouts/article';
 
 
 const Page = () => {
   return (
+    <Layout title='Homepage'> 
       <Container pt={20} maxW="container.md">
         <Box
           borderRadius="lg"
@@ -63,6 +64,7 @@ const Page = () => {
             machine learning for chemistry.
 
       </Container>
+    </Layout>
   );
 };
 
