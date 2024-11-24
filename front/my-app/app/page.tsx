@@ -5,11 +5,9 @@ import {
   Container,
   Box,
   Heading,
-  Image,
   Button,
   useColorModeValue,
 } from '@chakra-ui/react';
-import Section from '@/components/section';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Paragraph from '@/components/paragraph';
 import { BioSection, BioYear } from '@/components/bio';
@@ -44,7 +42,6 @@ const Page = () => {
           </Box>
         </Box>
 
-        <Section delay={0.1}>
           <Heading as="h3" variant="section-title">
             Work
           </Heading>
@@ -59,15 +56,13 @@ const Page = () => {
               </Button>
             </NextLink>
           </Box>
-        </Section>
 
-        <Section delay={0.2}>
           <Heading as="h3" variant="section-title">
             Bio
           </Heading>
           <BioSection>
             <BioYear>2000</BioYear>
-            Born in Saitama (埼玉), Japan.
+            Born in Saitama, Japan.
           </BioSection>
           <BioSection>
             <BioYear>2019</BioYear>
@@ -78,9 +73,7 @@ const Page = () => {
             Currently in the first year of the Master&apos;s Program in the Graduate School of Science, majoring in
             Chemistry at Rikkyo University.
           </BioSection>
-        </Section>
 
-        <Section delay={0.3}>
           <Heading as="h3" variant="section-title">
             Passions & Pursuits 🔥
           </Heading>
@@ -88,7 +81,7 @@ const Page = () => {
             My hobbies include muscle training, web application development, and I am currently studying Django, Next.js, and
             machine learning for chemistry.
           </Paragraph>
-        </Section>
+
       </Container>
   );
 };
