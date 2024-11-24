@@ -8,12 +8,15 @@ import {
   Button,
   useColorModeValue,
 } from '@chakra-ui/react';
+import Section from '@/components/section';
+import { BioSection, BioYear } from '@/components/bio';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-
+import Layout from '@/components/layouts/article';
 
 
 const Page = () => {
   return (
+    <Layout title='Homepage'> 
       <Container pt={20} maxW="container.md">
         <Box
           borderRadius="lg"
@@ -41,7 +44,7 @@ const Page = () => {
           >
           </Box>
         </Box>
-
+        <Section delay={0.1}>
           <Heading as="h3" variant="section-title">
             Work
           </Heading>
@@ -54,15 +57,35 @@ const Page = () => {
               </Button>
             </NextLink>
           </Box>
-
+        </Section>
+        <Section delay={0.2}>
           <Heading as="h3" variant="section-title">
             Bio
           </Heading>
-
+            <BioSection>
+              <BioYear>2000</BioYear>
+              Born in Saitama (埼玉), Japan.
+            </BioSection>
+            <BioSection>
+              <BioYear>2019</BioYear>
+              Graduated from Saitama Prefectural Tokorozawa High School.
+            </BioSection>
+            <BioSection>
+              <BioYear>2024 to present</BioYear>
+              Currently in the first year of the Master&apos;s Program in the Graduate School of Science, majoring in
+              Chemistry at Rikkyo University.
+            </BioSection>
+        </Section>
+        <Section delay={0.3}>
+          <Heading as="h3" variant="section-title">
+            Passions & Pursuits 🔥
+          </Heading>
+        </Section>
             My hobbies include muscle training, web application development, and I am currently studying Django, Next.js, and
             machine learning for chemistry.
 
       </Container>
+    </Layout>
   );
 };
 
